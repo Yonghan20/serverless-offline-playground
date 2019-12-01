@@ -1,0 +1,38 @@
+### success order payment
+POST http://localhost:3000/order
+Content-Type: application/json
+
+{
+    "orderName": "dummy test deliver",
+    "cardNumber": "4242 4242 4242 4242"
+}
+
+### fail order payment
+POST http://localhost:3000/order
+Content-Type: application/json
+
+{
+    "orderName": "dummy test fail",
+    "cardNumber": ""
+}
+
+### Get order by objectid
+GET http://localhost:3000/order/5de36417a5873c12187b59d4
+
+### Cancel order by objectid endpoint
+PUT http://localhost:3000/order/5de29190ccaf9732c4fb4287
+
+### success payment
+POST http://localhost:3000/payment
+Content-Type: application/json
+Authorization: Bearer test
+
+{
+    "cardNumber": "4242 4242 4242 4242"
+}
+
+### fail payment
+POST http://localhost:3000/payment
+Content-Type: application/json
+
+{}

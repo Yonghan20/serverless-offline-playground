@@ -1,0 +1,57 @@
+service: order-service
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline-sns
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    port: 3000
+  serverless-offline-sns:
+    port: 4002
+    debug: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  createOrder:
+    handler: src/handler.createOrder
+    events:
+      - http:
+           path: /order
+           method: POST
+
+  getOrder:
+    handler: src/handler.getOrder
+    events:
+      - http:
+           path: /order/{orderId}
+           method: GET
+           request:
+            parameter:
+              orderId: true
+
+  cancelOrder:
+    handler: src/handler.cancelOrder
+    events:
+      - http:
+           path: /order/{orderId}
+           method: PUT
+           request:
+            parameter:
+              orderId: true
+
+  delivery:
+    handler: src/handler.delivery
+    events:
+      - sns: test-topic
+
+  payment:
+    handler: src/handler.payment
+    events:
+      - http:
+           path: /payment
+           method: POST
