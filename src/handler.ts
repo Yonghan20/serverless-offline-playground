@@ -27,6 +27,8 @@ export const createOrder = async (
 
     const orderStatus = response.status == 200 ? 'confirmed' : 'cancelled'
 
+    await updateOne(id as string, orderStatus)
+
     if (response.status == 200) {
         console.log(response.status)
         // event to change order status to delivery
@@ -46,8 +48,6 @@ export const createOrder = async (
             },
         )
     }
-
-    await updateOne(id as string, orderStatus)
 
     return {
         statusCode: response.status,
