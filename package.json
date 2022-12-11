@@ -23,7 +23,7 @@
         "aws-lambda": "^0.1.2",
         "aws-sdk": "^2.580.0",
         "axios": "^0.19.0",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "mongodb": "^3.3.5",
         "serverless": "^1.58.0"
     },
